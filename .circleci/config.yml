@@ -25,11 +25,11 @@ workflows:
           requires:
             - build
       - hold2:
-          context: approvers # ここで制限付きコンテキストを参照。
+          context: approvers # 制限付きコンテキスト。1回目の承認者グループ。
           type: approval # 承認ジョブを表示。
           requires:
             - hold
       - deploy:
-          context: 2nd_approvers # ここで制限付きコンテキストを参照。
+          context: 2nd_approvers # 制限付きコンテキスト。２回目の承認者グループ。
           requires:
             - hold2
