@@ -24,7 +24,12 @@ workflows:
           type: approval # 承認ジョブを表示。
           requires:
             - build
-      - deploy:
+      - hold2:
           context: approvers # ここで制限付きコンテキストを参照。
+          type: approval # 承認ジョブを表示。
           requires:
             - hold
+      - deploy:
+          context: 2nd_approvers # ここで制限付きコンテキストを参照。
+          requires:
+            - hold2
